@@ -1,0 +1,27 @@
+=== Block Patterns UI ===
+Contributors: chrismademe
+Donate Link: https://chrisgalbraith.com
+Tags: block editor, gutenberg, block patterns
+Requires at least: 5.8
+Tested up to: 5.8
+Stable tag: 0.1.0
+Requires PHP: 7.2
+License: GPLv2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+
+A simple UI for creating and managing Block Patterns
+
+== Description ==
+
+Block Patterns are great, but registering them can be a little tedious. This plugin fixes that by allowing you to create and register Block Patterns using the Block Editor itself! You simply add the blocks you want to use as a pattern, add some (optional) information about them and you're ready to start using them in your posts and pages.
+
+== Screenshots ==
+
+1. A simple UI for managing Block Patterns
+2. Organise your patterns with Categories and Keywords
+3. Easily insert your Block Patterns into your posts
+
+== Changelog ==
+
+= 0.1.0 =
+* First release!

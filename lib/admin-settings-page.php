@@ -1,0 +1,90 @@
+<?php
+add_action( 'admin_menu', 'bpui_add_admin_menu' );
+add_action( 'admin_init', 'bpui_settings_init' );
+
+
+function bpui_add_admin_menu(  ) {
+	add_submenu_page( 'edit.php?post_type=bpui_block_pattern', 'Block Pattern UI Settings', 'Settings', 'manage_options', 'block_patterns_ui', 'bpui_options_page' );
+}
+
+
+function bpui_settings_init(  ) {
+
+	register_setting( 'pluginPage', 'bpui_settings' );
+
+	add_settings_section(
+		'bpui_pluginPage_section',
+		__( 'General Settings', 'bpui' ),
+		'bpui_settings_section_callback',
+		'pluginPage'
+	);
+
+	add_settings_field(
+		'bpui_unregister_core_patterns',
+		__( 'Unregister Core Block Patterns', 'bpui' ),
+		'bpui_unregister_core_patterns_render',
+		'pluginPage',
+		'bpui_pluginPage_section'
+	);
+
+	add_settings_field(
+		'bpui_default_category',
+		__( 'Default Category', 'bpui' ),
+		'bpui_default_category_render',
+		'pluginPage',
+		'bpui_pluginPage_section'
+	);
+
+
+}
+
+
+function bpui_unregister_core_patterns_render(  ) {
+
+	$options = get_option( 'bpui_settings' );
+	?>
+	<input type='checkbox' name='bpui_settings[bpui_unregister_core_patterns]' <?php checked( $options['bpui_unregister_core_patterns'], 1 ); ?> value='1'>
+	<?php
+
+}
+
+
+function bpui_default_category_render(  ) {
+
+    $categories = bpui_get_pattern_categories();
+
+	$options = get_option( 'bpui_settings' );
+	?>
+	<select name='bpui_settings[bpui_default_category]'>
+        <?php foreach ( $categories as $category ): ?>
+		<option value='<?php echo $category['name'] ?>' <?php selected( $options['bpui_default_category'], $category['name'] ); ?>><?php echo $category['label'] ?></option>
+        <?php endforeach; ?>
+    </select>
+
+<?php
+
+}
+
+
+function bpui_settings_section_callback(  ) {
+
+}
+
+
+function bpui_options_page(  ) {
+
+		?>
+		<form action='options.php' method='post'>
+
+			<h2>Block Patterns UI</h2>
+
+			<?php
+			settings_fields( 'pluginPage' );
+			do_settings_sections( 'pluginPage' );
+			submit_button();
+			?>
+
+		</form>
+		<?php
+
+}
