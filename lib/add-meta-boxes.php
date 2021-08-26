@@ -19,20 +19,22 @@ function bpui_pattern_settings_render() {
 
     $fields = [
         'categories' => [
-            'label' => 'Categories',
+            'label' => __( 'Categories', 'bpui' ),
             'type' => 'select',
             'required' => true,
-            'value' => get_post_meta( $post->ID, 'bpui_categories', true ),
+            'value' => get_post_meta( $post->ID, 'bpui_categories', true )
+                ? get_post_meta( $post->ID, 'bpui_categories', true )
+                : bpui_get_default_category(),
             'options' => bpui_get_pattern_categories()
         ],
         'keywords' => [
-            'label' => 'Keywords',
+            'label' => __( 'Keywords', 'bpui' ),
             'type' => 'text',
             'required' => false,
             'value' => get_post_meta( $post->ID, 'bpui_keywords', true )
         ],
         'viewport_width' => [
-            'label' => 'Viewport Width',
+            'label' => __( 'Viewport Width', 'bpui' ),
             'type' => 'number',
             'required' => false,
             'value' => get_post_meta( $post->ID, 'bpui_viewport_width', true )
@@ -44,14 +46,14 @@ function bpui_pattern_settings_render() {
 
         if ( $field['type'] === 'select' ) {
 
-            $render_options = array_map(function( $option ) use ($field) {
+            $render_options = array_map( function( $option ) use ($field) {
                 return sprintf(
                     '<option %s value="%s">%s</option>',
                     $field['value'] === $option['name'] ? 'selected' : '',
-                    $option['name'],
-                    $option['label']
+                    esc_attr( $option['name'] ),
+                    esc_html ($option['label'] )
                 );
-            }, $field['options']);
+            }, $field['options'] );
 
             printf(
                 '<div class="components-base-control__field">
@@ -60,10 +62,10 @@ function bpui_pattern_settings_render() {
                         %5$s
                     </select>
                 </div>',
-                $key,
-                $field['label'],
-                $field['type'],
-                sanitize_text_field( $field['value'] ),
+                esc_attr( $key ),
+                esc_html( $field['label'] ),
+                esc_attr( $field['type'] ),
+                esc_html( $field['value'] ),
                 join(PHP_EOL, $render_options)
             );
 
@@ -74,10 +76,10 @@ function bpui_pattern_settings_render() {
                     <label class="components-base-control__label" for="bpui_%1$s">%2$s</label>
                     <input class="components-text-control__input" type="%3$s" id="bpui_%1$s" name="bpui_%1$s" value="%4$s">
                 </div>',
-                $key,
-                $field['label'],
-                $field['type'],
-                sanitize_text_field( $field['value'] )
+                esc_attr( $key ),
+                esc_html( $field['label'] ),
+                esc_attr( $field['type'] ),
+                esc_html( $field['value'] )
             );
 
         }

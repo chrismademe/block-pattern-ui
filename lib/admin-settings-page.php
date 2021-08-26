@@ -14,14 +14,14 @@ function bpui_settings_init(  ) {
 
 	add_settings_section(
 		'bpui_pluginPage_section',
-		__( 'General Settings', 'bpui' ),
+		__( 'Settings', 'bpui' ),
 		'bpui_settings_section_callback',
 		'pluginPage'
 	);
 
 	add_settings_field(
 		'bpui_unregister_core_patterns',
-		__( 'Unregister Core Block Patterns', 'bpui' ),
+		__( 'Unregister Core Patterns', 'bpui' ),
 		'bpui_unregister_core_patterns_render',
 		'pluginPage',
 		'bpui_pluginPage_section'
@@ -44,6 +44,7 @@ function bpui_unregister_core_patterns_render(  ) {
 	$options = get_option( 'bpui_settings' );
 	?>
 	<input type='checkbox' name='bpui_settings[bpui_unregister_core_patterns]' <?php checked( $options['bpui_unregister_core_patterns'], 1 ); ?> value='1'>
+	<p>Checking this setting will remove all core block patterns.<br><em>This setting will not remove patterns registered by themes or other plugins.</em></p>
 	<?php
 
 }
@@ -57,18 +58,17 @@ function bpui_default_category_render(  ) {
 	?>
 	<select name='bpui_settings[bpui_default_category]'>
         <?php foreach ( $categories as $category ): ?>
-		<option value='<?php echo $category['name'] ?>' <?php selected( $options['bpui_default_category'], $category['name'] ); ?>><?php echo $category['label'] ?></option>
+		<option value='<?php echo esc_attr( $category['name'] ) ?>' <?php selected( $options['bpui_default_category'], $category['name'] ); ?>><?php echo esc_html( $category['label'] ) ?></option>
         <?php endforeach; ?>
     </select>
+	<p>Default category for new Block Patterns.</p>
 
 <?php
 
 }
 
 
-function bpui_settings_section_callback(  ) {
-
-}
+function bpui_settings_section_callback(  ) {}
 
 
 function bpui_options_page(  ) {
@@ -76,7 +76,7 @@ function bpui_options_page(  ) {
 		?>
 		<form action='options.php' method='post'>
 
-			<h2>Block Patterns UI</h2>
+			<h2><?php echo __( 'Block Patterns UI', 'bpui' ) ?></h2>
 
 			<?php
 			settings_fields( 'pluginPage' );
