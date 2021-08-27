@@ -12,9 +12,31 @@
  * Text Domain: bpui
  */
 
-$_bpui_includes = glob(__DIR__ . '/lib/*.php');
-if ( !empty($_bpui_includes) ) {
-    foreach ($_bpui_includes as $file) {
-        require_once $file;
+defined('ABSPATH') || exit;
+
+if ( !class_exists('BlockPatternsUI') ) {
+
+    class BlockPatternsUI {
+
+        public function __construct() {
+            $this->setup();
+        }
+
+        private function setup() {
+            $includes = glob(__DIR__ . '/lib/*.php');
+            if ( !empty($includes) ) {
+                foreach ($includes as $file) {
+                    require_once $file;
+                }
+            }
+        }
+
+        public static function uri() {
+            return plugin_dir_url( __FILE__ );
+        }
+
     }
+
+    new BlockPatternsUI;
+
 }

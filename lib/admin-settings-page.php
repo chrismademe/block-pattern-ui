@@ -68,7 +68,10 @@ function bpui_default_category_render(  ) {
 }
 
 
-function bpui_settings_section_callback(  ) {}
+function bpui_settings_section_callback(  ) {
+	$logo = BlockPatternsUI::uri() . 'frontend/logo-h.png';
+	printf( '<img src="%s" alt="Block Patterns UI logo" width="256" height="41" />', esc_url( $logo ) );
+}
 
 
 function bpui_options_page(  ) {
