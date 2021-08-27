@@ -23,5 +23,8 @@ Block Patterns are great, but registering them can be a little tedious. This plu
 
 == Changelog ==
 
+= 0.4.0 =
+* You can now select multiple categories for Block Patterns
+
 = 0.1.0 =
 * First release!
