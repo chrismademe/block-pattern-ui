@@ -6,6 +6,7 @@
 add_filter( 'manage_bpui_block_pattern_posts_columns', function( $columns ) {
     $columns['cats'] = __( 'Categories', 'bpui' );
     $columns['keywords'] = __( 'Keywords', 'bpui' );
+    $columns['author'] = __( 'Created by', 'bpui' );
 
     unset($columns['date']);
 
