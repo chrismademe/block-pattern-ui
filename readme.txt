@@ -17,9 +17,9 @@ Block Patterns are great, but registering them can be a little tedious. This plu
 
 == Screenshots ==
 
-1. A simple UI for managing Block Patterns
-2. Organise your patterns with Categories and Keywords
-3. Easily insert your Block Patterns into your posts
+1. List of registered Block Patterns
+2. Block Patterns UI settings
+3. Easily build and edit your patterns using the Block Editor
 
 == Changelog ==
 
