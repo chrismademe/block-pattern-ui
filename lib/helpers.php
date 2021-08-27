@@ -17,11 +17,23 @@ function bpui_get_pattern_categories() {
 function bpui_get_default_category() {
     $options = get_option( 'bpui_settings' );
 
-    if ( ! is_array($options) ) return '';
+    if ( ! is_array($options) ) return [];
 
     if ( array_key_exists('bpui_default_category', $options) ) {
         return $options['bpui_default_category'];
     }
 
-    return '';
+    return [];
+}
+
+/**
+ * Force Array
+ *
+ * Will place a string inside an array
+ *
+ * @param string|array $input
+ * @return array
+ */
+function force_array( $input ) {
+    return is_array( $input ) ? $input : [$input];
 }

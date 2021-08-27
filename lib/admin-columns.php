@@ -19,7 +19,13 @@ add_filter( 'manage_bpui_block_pattern_posts_columns', function( $columns ) {
 add_filter( 'manage_bpui_block_pattern_posts_custom_column', function( $column, $post_id ) {
 
     if ( $column === 'cats' ) {
-        echo esc_html( get_post_meta( $post_id, 'bpui_categories', true ) );
+        $categories = get_post_meta( $post_id, 'bpui_categories', true );
+
+        if ( is_array( $categories ) ) {
+            echo esc_html( join(', ', $categories) );
+        } else {
+            echo esc_html( $categories );
+        }
     }
 
     if ( $column === 'keywords' ) {

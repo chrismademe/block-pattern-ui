@@ -13,15 +13,17 @@ add_action( 'init', function() {
         // Register patterns
         foreach ( $patterns as $pattern ) {
 
-            // Get Custom Field Data
-            $pattern->meta = get_post_meta($pattern->ID);
+            // Get Pattern Meta Data
+            $categories = get_post_meta( $pattern->ID, 'bpui_categories', true );
+            $keywords = get_post_meta( $pattern->ID, 'bpui_keywords', true );
+            $viewport_width = get_post_meta( $pattern->ID, 'bpui_viewport_width', true );
 
             register_block_pattern( 'bpui/' . $pattern->post_name, [
                 'title' => $pattern->post_title,
                 'content' => $pattern->post_content,
-                'categories' => $pattern->meta['bpui_categories'][0] ? explode(',', $pattern->meta['bpui_categories'][0]) : null,
-                'keywords' => $pattern->meta['bpui_keywords'][0] ?? null,
-                'viewportWidth' => $pattern->meta['bpui_viewport_width'][0] ?? null
+                'categories' => $categories ? force_array($categories) : null,
+                'keywords' => $keywords ?? null,
+                'viewportWidth' => $viewport_width ?? null
             ] );
         }
     }

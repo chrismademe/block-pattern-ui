@@ -49,7 +49,7 @@ function bpui_pattern_settings_render() {
             $render_options = array_map( function( $option ) use ($field) {
                 return sprintf(
                     '<option %s value="%s">%s</option>',
-                    $field['value'] === $option['name'] ? 'selected' : '',
+                    in_array($option['name'], force_array($field['value'])) ? 'selected' : '',
                     esc_attr( $option['name'] ),
                     esc_html ($option['label'] )
                 );
@@ -58,14 +58,13 @@ function bpui_pattern_settings_render() {
             printf(
                 '<div class="components-base-control__field">
                     <label class="components-base-control__label" for="bpui_%1$s">%2$s</label>
-                    <select class="components-text-control__input" type="%3$s" id="bpui_%1$s" name="bpui_%1$s" value="%4$s">
-                        %5$s
+                    <select required class="bpui-select components-text-control__input" type="%3$s" id="bpui_%1$s" name="bpui_%1$s[]" multiple="multiple">
+                        %4$s
                     </select>
                 </div>',
                 esc_attr( $key ),
                 esc_html( $field['label'] ),
                 esc_attr( $field['type'] ),
-                esc_html( $field['value'] ),
                 join(PHP_EOL, $render_options)
             );
 
@@ -105,7 +104,12 @@ add_action( 'save_post', function( $post_id, $post ) {
 
     // Now that we're authenticated, time to save the data.
     // This sanitizes the data from the field and saves it into an array $meta.
-    $meta['bpui_categories'] = sanitize_text_field( $_POST['bpui_categories'] );
+    if ( is_array( $_POST['bpui_categories'] ) ) {
+        $meta['bpui_categories'] = array_map( function($value) {
+            return sanitize_text_field( $value );
+        }, $_POST['bpui_categories'] );
+    }
+
     $meta['bpui_keywords'] = sanitize_text_field( $_POST['bpui_keywords'] );
     $meta['bpui_viewport_width'] = sanitize_text_field( $_POST['bpui_viewport_width'] );
 
