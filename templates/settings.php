@@ -31,7 +31,7 @@ $this->partial( 'header' );
                 <div class="bpui-form-field__input">
                     <select required class="bpui-select" name="bpui_settings[bpui_default_category][]" multiple>
                         <?php foreach ( $categories as $category ): ?>
-                        <option value='<?php echo esc_attr( $category['name'] ) ?>' <?php echo in_array($category['name'], $options['bpui_default_category']) ? 'selected' : '' ?>><?php echo esc_html( $category['label'] ) ?></option>
+                        <option value='<?php echo esc_attr( $category['name'] ) ?>' <?php echo in_array($category['name'], force_array($options['bpui_default_category'])) ? 'selected' : '' ?>><?php echo esc_html( $category['label'] ) ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>

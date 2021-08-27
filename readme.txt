@@ -23,6 +23,9 @@ Block Patterns are great, but registering them can be a little tedious. This plu
 
 == Changelog ==
 
+= 0.4.1 =
+* Fixes broken default category selection because you only had 1 selected before updating to 0.4.0
+
 = 0.4.0 =
 * You can now select multiple categories for Block Patterns
 
