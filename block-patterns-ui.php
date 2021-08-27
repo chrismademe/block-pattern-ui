@@ -6,7 +6,7 @@
  * Description: A simple UI for creating and managing Block Patterns
  * Author: Chris Galbraith
  * Author URI: https://chrisgalbraith.com
- * Version: 0.2.0
+ * Version: 0.3.0
  * License: GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: bpui

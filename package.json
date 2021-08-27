@@ -1,6 +1,6 @@
 {
 	"name": "block-patterns-ui",
-	"version": "0.2.0",
+	"version": "0.3.0",
 	"description": "A simple UI for creating and managing Block Patterns",
 	"main": "gulpfile.js",
 	"scripts": {

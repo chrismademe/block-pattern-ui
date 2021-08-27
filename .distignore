@@ -4,3 +4,7 @@ source-files/
 .wordpress-org/
 .gitignore
 .distignore
+.nvmrc
+gulpfile.js
+package-lock.json
+package.json
