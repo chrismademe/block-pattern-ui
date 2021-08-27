@@ -23,12 +23,18 @@ if ( !class_exists('BlockPatternsUI') ) {
         }
 
         private function setup() {
+            require_once plugin_dir_path( __FILE__ ) . 'lib/classes/Template.php';
+
             $includes = glob(__DIR__ . '/lib/*.php');
             if ( !empty($includes) ) {
                 foreach ($includes as $file) {
                     require_once $file;
                 }
             }
+        }
+
+        public static function dir() {
+            return plugin_dir_path( __FILE__ );
         }
 
         public static function uri() {
