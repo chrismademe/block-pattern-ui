@@ -1,0 +1,12 @@
+.bpui-container {
+	background-color: white;
+	border-radius: var(--bpui-radius-base);
+	box-shadow: var(--bpui-shadow-xl);
+	margin-right: var(--bpui-space-8);
+	margin-top: var(--bpui-space-8);
+	max-width: 820px;
+
+	&__inner {
+		padding: var(--bpui-space-6) var(--bpui-space-8);
+	}
+}

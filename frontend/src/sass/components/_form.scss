@@ -1,0 +1,33 @@
+.bpui-form > * + * {
+	margin-top: var(--bpui-space-3);
+}
+
+.bpui-form__footer {
+	border-top: 2px solid var(--bpui-color-gray-2);
+	padding-top: var(--bpui-space-4);
+	margin-top: var(--bpui-space-4);
+}
+
+@media (min-width: 768px) {
+	.bpui-form-field {
+		display: grid;
+		grid-template-columns: 1fr 12rem;
+		gap: var(--bpui-space-3);
+
+		label {
+			font-weight: 700;
+		}
+
+		p {
+			color: var(--bpui-bpui-color-gray-40);
+			margin: 0;
+			margin-top: var(--bpui-space-1);
+		}
+
+		&__input {
+			align-items: flex-start;
+			display: flex;
+			justify-content: flex-end;
+		}
+	}
+}
