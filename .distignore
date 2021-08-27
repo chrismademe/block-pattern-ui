@@ -1,5 +1,6 @@
 .git/
 .github/
 source-files/
+.wordpress-org/
 .gitignore
 .distignore
