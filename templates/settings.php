@@ -13,7 +13,7 @@ $this->partial( 'header' );
         <form class="bpui-form" action="options.php" method="post">
             <?php settings_fields( 'pluginPage' );  ?>
 
-        <div class="bpui-form-field">
+            <div class="bpui-form-field">
                 <div class="bpui-form-field__label">
                     <label for="bpui_settings[bpui_default_category">Unregister Core Patterns</label>
                     <p>Checking this setting will remove all core block patterns. <em>This setting will not remove patterns registered by themes or other plugins.</em></p>
