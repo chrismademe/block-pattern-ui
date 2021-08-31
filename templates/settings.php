@@ -15,21 +15,21 @@ $this->partial( 'header' );
 
             <div class="bpui-form-field">
                 <div class="bpui-form-field__label">
-                    <label for="bpui_settings[bpui_default_category">Unregister Core Patterns</label>
+                    <label for="bpui_settings-unregister_core_patterns">Unregister Core Patterns</label>
                     <p>Checking this setting will remove all core block patterns. <em>This setting will not remove patterns registered by themes or other plugins.</em></p>
                 </div>
                 <div class="bpui-form-field__input">
-                <input type='checkbox' name='bpui_settings[bpui_unregister_core_patterns]' <?php checked( $options['bpui_unregister_core_patterns'], 1 ); ?> value='1'>
+                    <input id="bpui_settings-unregister_core_patterns" type='checkbox' name='bpui_settings[bpui_unregister_core_patterns]' <?php checked( $options['bpui_unregister_core_patterns'], 1 ); ?> value='1'>
                 </div>
             </div>
 
             <div class="bpui-form-field">
                 <div class="bpui-form-field__label">
-                    <label for="bpui_settings[bpui_default_category">Default Category</label>
+                    <label for="bpui_settings-default_category">Default Category</label>
                     <p>Default category for new Block Patterns.</p>
                 </div>
                 <div class="bpui-form-field__input">
-                    <select required class="bpui-select" name="bpui_settings[bpui_default_category][]" multiple>
+                    <select id="bpui_settings-default_category" required class="bpui-select" name="bpui_settings[bpui_default_category][]" multiple>
                         <?php foreach ( $categories as $category ): ?>
                         <option value='<?php echo esc_attr( $category['name'] ) ?>' <?php echo in_array($category['name'], force_array($options['bpui_default_category'])) ? 'selected' : '' ?>><?php echo esc_html( $category['label'] ) ?></option>
                         <?php endforeach; ?>
