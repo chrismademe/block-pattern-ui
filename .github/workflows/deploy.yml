@@ -9,6 +9,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@main
+    - uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+    - name: Build Frontend Assets # Remove or modify this step as needed
+      run: |
+        npm install
+        npm run build
     - name: WordPress Plugin Deploy
       uses: 10up/action-wordpress-plugin-deploy@stable
       env:
